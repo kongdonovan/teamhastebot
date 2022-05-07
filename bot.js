@@ -13,6 +13,8 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
+	client.user.setActivity("over the people in Team Haste", {type: 'WATCHING'});
+	client.user.setPresence("online");
 	console.log('Ready!');
 });
 
