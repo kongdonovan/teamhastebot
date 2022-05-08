@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS], presence: {status: "dnd", activities: [{name: "over the people of Team Haste"}]} });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS], presence: {status: "dnd", activities: [{name: "over the people of Team Haste", type: 3}]} });
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
