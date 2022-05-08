@@ -1,22 +1,25 @@
 /**
  * gets detailed user information
- * 
+ *
  */
  const { MessageEmbed } = require('discord.js');
  const { Guild } = require('discord.js');
+ const { prefix } = require('../config.json');
 
  module.exports = {
     name: "userinfo",
     description: "Returns information about a user.",
     args: "<user>",
+    arglen: 1,
+    argrequired: true,
     execute(message) {
         let embed = new MessageEmbed();
         let cmdArray = message.content.split(" ");
-        if (cmdArray.length != 2) {
-            embed.setTitle('An error has occured!').setDescription('This command accepts 1 argument. Please run #help userinfo for more info.');
+        let user = message.mentions.members.first();
+        if (!user) {
+            embed.setTitle('An error has occured!').setDescription('Please ping a user in order to use this command!');
             return message.channel.send({ embeds: [embed] });
         }
-        let user = message.mentions.members.first();
         let date = new Date(user.joinedTimestamp);
         console.log(date.getHours() / 12);
         if (date.getHours() / 12 >= 1) {

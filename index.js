@@ -2,36 +2,61 @@
  * index function to handle all commands and bot stuff
  */
 
+// Required dependencies and modules
 const { Client, Collection, Intents } = require('discord.js');
 const fs = require('fs');
 const { token, prefix } = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], presence: {status: "dnd", activities: [{name: "Team Haste | #help", type: 3}]} });
+// Object initializations
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], presence: {status: "dnd", activities: [{name: "Team Haste | " + prefix + "help", type: 3}]} });
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+let parsers = new Collection();
 
+// Command and parser retrievers
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const argParse = require('./parsers/argParse.js');
+
+// Requires all commands and inserts them into client.commands
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
 
+// Outputs to the console whenever bot is running
 client.once('ready', async () => {
     console.log('Logged in successfully!');
 });
 
+// Reads a message sent in chat and either goes into error handling or runs command
 client.on('messageCreate', message => {
+    // Returns if the message author is a bot
     if (message.author.bot) {
         return;
     }
+
+    // Splits the message content into two arrays, one split by whitespace and one split by character
     let cmd = message.content;
     let messageArray = cmd.split(" ");
-    let messageArray2 = cmd.split("");
+    let messageArray2 = messageArray[0].split("");
 
+    // If the first character matches the prefix, fire the associated command (or return if command does not exist)
     if (messageArray2[0] === prefix) {
         cmd = messageArray[0].substring(1);
         const command = client.commands.get(cmd);
-        command.execute(message);
+        const arglen = command.arglen;
+        const argIsRequired = command.argrequired;
+        if ((argIsRequired && arglen != messageArray.length - 1) || (!argIsRequired && messageArray.length - 1 < arglen) || messageArray.length - 1 > arglen) {
+            argParse.execute(arglen, argIsRequired, cmd, message);
+            return;
+        }
+        if (!command) {
+            return;
+        } else {
+            command.execute(message);
+            return;
+        }
     }
 });
 
+// Logs in to bot (todo: move into environment variables maybe)
 client.login(token);
