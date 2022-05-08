@@ -31,4 +31,26 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
+client.on("message", async () => {
+	if (message.author.bot) return;
+	if (!message.content.startsWith(prefix)) return;
+	
+	let command = message.content.split(" ")[0];
+	command = command.slice(prefix.length);
+	
+	const args = message.content.slice(prefix.length).trim().split(/ +/g);
+	
+	if (command === "ping") {
+		message.channel.send(`Pong! Time took: ${Date.now() - message.createdTimestamp} ms`);
+	} else
+
+	if (command === "say") {
+		message.delete()
+		let thetext = args[2];
+		let thechannel = args[1];
+		
+		bot.channels.find("name",`${thechannel}`).sendMessage(`${thetext}`)
+	}
+});
+
 client.login(token);
