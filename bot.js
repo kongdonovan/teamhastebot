@@ -31,4 +31,10 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
+client.on('messageCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	console.log(interaction);
+})
+
 client.login(token);
