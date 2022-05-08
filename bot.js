@@ -31,10 +31,10 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-client.on('messageCreate', async interaction => {
-	if (!interaction.isCommand()) return;
-
-	console.log(interaction);
-})
+client.on("messageCreate", (message) => {
+	if (message.content.startsWith("ping")) {
+	  message.channel.send("pong!");
+	}
+});
 
 client.login(token);
