@@ -19,7 +19,9 @@ const argParse = require('./parsers/argParse.js');
 // Requires all commands and inserts them into client.commands
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
+    if (command.name !== "template") {
+        client.commands.set(command.name, command);
+    }
 }
 
 // Outputs to the console whenever bot is running
@@ -43,18 +45,17 @@ client.on('messageCreate', message => {
     if (messageArray2[0] === prefix) {
         cmd = messageArray[0].substring(1);
         const command = client.commands.get(cmd);
+        if (!command) {
+            return;
+        }
         const arglen = command.arglen;
         const argIsRequired = command.argrequired;
-        if ((argIsRequired && arglen != messageArray.length - 1) || (!argIsRequired && messageArray.length - 1 < arglen) || messageArray.length - 1 > arglen) {
+        if ((argIsRequired && arglen != messageArray.length - 1) || (messageArray.length - 1 > arglen)) {
             argParse.execute(arglen, argIsRequired, cmd, message);
             return;
         }
-        if (!command) {
-            return;
-        } else {
-            command.execute(message);
-            return;
-        }
+        command.execute(message);
+        return;
     }
 });
 

@@ -16,15 +16,17 @@ module.exports = {
         const embed = new MessageEmbed()
                 .setTitle('HasteBot help')
                 .setDescription('An index of all commands in HasteBot.');
-        if (cmdArray.length === arglen) {
+        if (cmdArray.length === this.arglen) {
             let cmdArray = [];
             const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
             for (const file of commandFiles) {
                 const command = require(`./${file}`);
-                if (command.args) {
-                    cmdArray.push({name: command.name + " " + command.args, value: command.description, inline: true});
-                } else {
-                    cmdArray.push({name: command.name, value: command.description, inline: true});
+                if (command.name !== 'commandname') {
+                    if (command.args) {
+                        cmdArray.push({name: command.name + " " + command.args, value: command.description, inline: true});
+                    } else {
+                        cmdArray.push({name: command.name, value: command.description, inline: true});
+                    }
                 }
             }
             for (let i = 0; i < cmdArray.length; i++) {

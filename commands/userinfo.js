@@ -21,7 +21,6 @@
             return message.channel.send({ embeds: [embed] });
         }
         let date = new Date(user.joinedTimestamp);
-        console.log(date.getHours() / 12);
         if (date.getHours() / 12 >= 1) {
             date = (date.getHours() % 12) + ":" + date.getMinutes() + " PM, " + date.toDateString();
         } else {
@@ -41,7 +40,7 @@
         }
         roleString = roleString.trim();
         embed
-            .setTitle('User info on ' + user.user.username + '#' + user.user.discriminator)
+            .setTitle('User info on ' + user.user.tag)
             .setDescription('<@' + user.user.id + '>')
             .setThumbnail(user.user.avatarURL())
             .addField('Server join date', date, false)
