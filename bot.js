@@ -1,8 +1,9 @@
 const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
+const { ActivityTypes } = require('discord.js/typings/enums');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS], presence: {status: "dnd", activities: [{name: "over the people of Team Haste"}, {type: "WATCHING"}]} });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS], presence: {status: "dnd", activities: [{name: "over the people of Team Haste"}, {type: ActivityTypes.WATCHING}]} });
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
