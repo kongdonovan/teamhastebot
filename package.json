@@ -1,18 +1,14 @@
 {
-  "name": "hastebot",
+  "name": "hastebotv2",
   "version": "1.0.0",
   "description": "",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/builders": "^0.13.0",
-    "@discordjs/rest": "^0.4.1",
-    "discord-api-types": "^0.32.1",
-    "discord.js": "^13.6.0",
-    "noblox.js": "^4.13.1"
+    "discord.js": "^13.6.0"
   }
 }
