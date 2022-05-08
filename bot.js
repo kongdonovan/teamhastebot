@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS], presence: {status: "dnd", activities: ["over the people of Team Haste", WATCHING]} });
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -13,8 +13,6 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-	client.user.setActivity("over the people in Team Haste", {type: 'WATCHING'});
-	client.user.setPresence("online");
 	console.log('Ready!');
 });
 
