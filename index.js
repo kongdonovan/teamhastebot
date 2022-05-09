@@ -3,7 +3,7 @@
  */
 
 // Required dependencies and modules
-const { Client, Collection, Intents } = require('discord.js');
+const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const fs = require('fs');
 const { token, prefix } = require('./config.json');
 
@@ -34,6 +34,15 @@ client.on('messageCreate', message => {
     // Returns if the message author is a bot
     if (message.author.bot) {
         return;
+    }
+
+    // Sends a surprise if you're unlucky enough.
+    let num = Math.floor(Math.random() * 1000);
+    if (num === 69) {
+        let embed = new MessageEmbed()
+            .setTitle('haha funny penis gif')
+            .setImage('https://media.discordapp.net/attachments/527670498658746388/533155330637430796/image.gif');
+        return message.channel.send({embeds: [embed]});
     }
 
     // Splits the message content into two arrays, one split by whitespace and one split by character
