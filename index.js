@@ -8,7 +8,7 @@ const fs = require('fs');
 const { token, prefix } = require('./config.json');
 
 // Object initializations
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], presence: {status: "dnd", activities: [{name: "Team Haste | " + prefix + "help", type: 3}]} });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES], presence: {status: "dnd", activities: [{name: "Team Haste | " + prefix + "help", type: 3}]} });
 client.commands = new Collection();
 let parsers = new Collection();
 

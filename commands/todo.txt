@@ -1,6 +1,5 @@
 Todo list for this:
     - Come up with an args helper: Done (may still need to fix edge cases as needed)
-    - Add/remove channels (for manager roles only)
     - Database integration to easily keep track of stuff
     - Roblox commands (make something similar to Echelon maybe)
     - Music functionality (YT, Spotify)
