@@ -5,7 +5,7 @@
 const { MessageEmbed, MessageFlags } = require('discord.js');
 const { Guild } = require('discord.js');
 const { prefix } = require('../config.json');
-const { joinVoiceChannel } = require('@discordjs/voice');
+const { joinVoiceChannel, VoiceConnectionStatus } = require('@discordjs/voice');
 
 module.exports = {
     name: "connect",
@@ -24,6 +24,11 @@ module.exports = {
             guildId: message.guildId,
             adapterCreator: message.member.voice.guild.voiceAdapterCreator,
         })
+
+        connection.on(VoiceConnectionStatus.Ready, () => {
+            console.log('The connection has entered the Ready state - ready to play audio!');
+        });
+
         const embed = new MessageEmbed()
             .setDescription('Successfully connected!');
         return message.channel.send({embeds: [embed]});
