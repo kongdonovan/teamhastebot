@@ -15,7 +15,7 @@ module.exports = {
         const embed = new MessageEmbed()
         const partyGifs = ['https://c.tenor.com/5kwkfiTj-sEAAAAM/puppet-dance.gif', 'https://c.tenor.com/P-8ZvqnS4AwAAAAC/dancing-cat-dancing-kitten.gif', 'https://c.tenor.com/XUFgKlz1DOUAAAAM/yakuza0-friday.gif']
         const noPartyGif = 'https://c.tenor.com/YmbhZefrpy8AAAAM/sad-frown.gif'
-        const alJeffreyId = '168490999235084288'
+        const alJeffreyId = '180875339054972928'
         const partyGif = partyGifs[Math.floor(Math.random() * partyGifs.length)];
         const author = message.member.id;
 
