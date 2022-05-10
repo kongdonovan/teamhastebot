@@ -1,0 +1,5 @@
+1. make changes
+2. save changes
+3. once saved, do git add .
+4. once 3 is done, do git commit -m "[insert message here]"
+5. once committed, do git push
