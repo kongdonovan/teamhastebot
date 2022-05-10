@@ -8,6 +8,6 @@ module.exports = {
     arglen: 0,
     argrequired: true,
     execute(message) {
-        return message.channel.send("Pong!");
+        return message.channel.send("```Pong!```");
     }
 }
