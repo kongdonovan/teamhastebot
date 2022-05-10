@@ -15,8 +15,8 @@ module.exports = {
     execute(message) {
         const embed = new MessageEmbed()
         const alJeffreyId = '180875339054972928'
-        const choosePartyGif = partyImages[Math.floor(Math.random() * partyGifs.length)];
-        const chooseNoPartyGif = noPartyImages[Math.floor(Math.random() * noPartyGifs.length)];
+        const choosePartyGif = partyImages[Math.floor(Math.random() * partyImages.length)];
+        const chooseNoPartyGif = noPartyImages[Math.floor(Math.random() * noPartyImages.length)];
         const author = message.member.id;
 
         if (author === alJeffreyId) {
