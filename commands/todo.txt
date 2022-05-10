@@ -4,3 +4,6 @@ Todo list for this:
     - Roblox commands (make something similar to Echelon maybe)
     - Music functionality (YT, Spotify)
     - Edge case in lovecalculate where it doesnt show username if you ping someone
+    - teach nessa javascript
+
+hello worlkd
