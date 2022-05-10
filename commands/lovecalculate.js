@@ -4,6 +4,7 @@
  */
 const { MessageEmbed } = require('discord.js');
 const {prefix} = require('../config.json');
+const { loveCalculateArray } = require('./images.json');
 
 module.exports = {
     name: "lovecalculate",
@@ -21,21 +22,21 @@ module.exports = {
             .setTitle('The amount of love between ' + cmdArray[1] + ' and ' + cmdArray[2] + ' is ' + loveValue + '%')
             .setDescription('You two were clearly made to be <3');
         if (loveValue >= 80) {
-            embed.setImage('https://c.tenor.com/BmCbsCskdA4AAAAC/omg-oh-my-god.gif')
+            embed.setImage(loveCalculateArray[0])
             } else if (loveValue >= 60 && loveValue < 80) {
-            embed.setImage('https://c.tenor.com/ojVr4Q5ojagAAAAd/eating-a-burger-with-no-honey-mustard-ayodrip.gif');
+            embed.setImage(loveCalculateArray[1]);
             } else if (loveValue >= 40 && loveValue < 60) {
-            embed.setImage('https://c.tenor.com/WZa9hxnB3dkAAAAd/gingerbread-man-ginerbread.gif');
+            embed.setImage(loveCalculateArray[2]);
             } else if (loveValue >= 20 && loveValue < 40) {
-            embed.setImage('https://c.tenor.com/qlRv_xKX2vUAAAAd/beomkyuta-cachorro-rindo.gif');
+            embed.setImage(loveCalculateArray[3]);
             } else {
-            embed.setImage('https://media.discordapp.net/attachments/910740525785706521/943696757315993600/caption1.gif');
+            embed.setImage(loveCalculateArray[4]);
             }
         let num = Math.floor(Math.random() * 100);
         if (num === 69) {
             let newEmbed = new MessageEmbed()
                 .setTitle('haha funny penis surgery gif')
-                .setImage('https://media.discordapp.net/attachments/527670498658746388/533155330637430796/image.gif')
+                .setImage(loveCalculateArray[5])
             return message.channel.send({ embeds: [newEmbed] });
         } else {
             return message.channel.send({ embeds: [embed] });
