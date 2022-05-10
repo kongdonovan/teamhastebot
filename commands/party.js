@@ -13,8 +13,8 @@ module.exports = {
     argrequired: true,
     execute(message) {
         const embed = new MessageEmbed()
-        const partyGifs = ['https://c.tenor.com/5kwkfiTj-sEAAAAM/puppet-dance.gif', 'https://c.tenor.com/P-8ZvqnS4AwAAAAC/dancing-cat-dancing-kitten.gif', 'https://c.tenor.com/XUFgKlz1DOUAAAAM/yakuza0-friday.gif']
-        const noPartyGif = 'https://c.tenor.com/YmbhZefrpy8AAAAM/sad-frown.gif'
+        const partyGifs = ['./img/dancing-cat.gif', './img/puppet-dance.gif', './img/yakuza.gif']
+        const noPartyGif = './img/sad-frown.gif'
         const alJeffreyId = '180875339054972928'
         const partyGif = partyGifs[Math.floor(Math.random() * partyGifs.length)];
         const author = message.member.id;
