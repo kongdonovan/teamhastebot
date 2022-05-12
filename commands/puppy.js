@@ -16,7 +16,7 @@ module.exports = {
         try {
             let randNum = Math.floor(Math.random() * 100);
             const embed = new MessageEmbed()
-            if (randNum <= 10) {
+            if (randNum <= 5) {
                 const images = ['https://c.tenor.com/Tvvm1Z1HXnsAAAAC/twerk-sex-horny-fuckme-roblox.gif', 'https://c.tenor.com/aACtrJmVYMgAAAAd/twerk.gif']
                 embed.setTitle('A... black dude shaking his ass??? 😳').setImage(images[Math.floor(Math.random()* images.length)]);
             } else {
