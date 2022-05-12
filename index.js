@@ -8,7 +8,7 @@ const fs = require('fs');
 const { token, prefix } = require('./config.json');
 
 // Object initializations
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES], presence: {status: "dnd", activities: [{name: "Team Haste | " + prefix + "help", type: 3}]} });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES], presence: {status: "dnd", activities: [{name: "Team Haste | " + prefix + "help", type: 3}]}, partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 client.commands = new Collection();
 let parsers = new Collection();
 
@@ -35,6 +35,8 @@ client.on('messageCreate', message => {
     if (message.author.bot) {
         return;
     }
+    client.lastMessage = message.content;
+    client.lastMessageAuthor = "<@" + message.member.id + ">";
 
     // Sends a surprise if you're unlucky enough.
     let num = Math.floor(Math.random() * 1000);
@@ -67,6 +69,17 @@ client.on('messageCreate', message => {
         return;
     }
 });
+
+client.on('messageDelete', async (message) => {
+    if (!client.auditEnabled) return;
+
+    message.channel.id = client.channel;
+    console.log(message);
+    const embed = new MessageEmbed()
+        .setTitle('Message by ' + message.member.user.tag + ' deleted!')
+        .setDescription(message.content);
+    return message.channel.send({ embeds: [embed] });
+})
 
 // Logs in to bot (todo: move into environment variables maybe)
 client.login(token);
