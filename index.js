@@ -61,7 +61,7 @@ client.on('messageCreate', message => {
         }
         const arglen = command.arglen;
         const argIsRequired = command.argrequired;
-        if ((argIsRequired && arglen != messageArray.length - 1) || (messageArray.length - 1 > arglen)) {
+        if (((argIsRequired && arglen != messageArray.length - 1) || (messageArray.length - 1 > arglen)) && arglen != -1) {
             argParse.execute(arglen, argIsRequired, cmd, message);
             return;
         }
