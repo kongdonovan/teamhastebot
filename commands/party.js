@@ -9,6 +9,7 @@ const { partyImages, noPartyImages } = require('./images.json');
 
 module.exports = {
     name: "party",
+    category: "fun",
     description: "Sends a partying gif",
     arglen: 0,
     argrequired: true,

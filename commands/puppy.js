@@ -9,6 +9,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
     name: "puppy",
+    category: "fun",
     description: "Gives you a cute image of a puppy.",
     arglen: 0,
     argrequired: true,

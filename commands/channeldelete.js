@@ -8,6 +8,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
     name: "channeldelete",
+    category: "utility",
     description: "Deletes the current channel. Use at your own risk.",
     arglen: 0,
     argrequired: true,

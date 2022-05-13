@@ -9,6 +9,7 @@ const fs = require('fs').promises;
 
 module.exports = {
     name: "removegif",
+    category: "admin",
     description: "Removes a gif from a specified array.",
     args:"<array> <image link>",
     arglen: 2,

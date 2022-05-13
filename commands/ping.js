@@ -4,6 +4,7 @@
 
 module.exports = {
     name: "ping",
+    category: "utility",
     description: "Returns pong.",
     arglen: 0,
     argrequired: true,

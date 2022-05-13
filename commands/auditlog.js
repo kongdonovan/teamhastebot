@@ -8,6 +8,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
     name: "auditlog",
+    category: "admin",
     description: "Enables audit logs in the specified channel. Please be sure to specify either a channel id or mention the channel directly.",
     args: "<enable/disable> <channel>",
     arglen: 2,

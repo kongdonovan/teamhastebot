@@ -8,6 +8,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
     name: "getbitches",
+    category: "fun",
     description: "Gets you bitches.",
     arglen: 0,
     argrequired: true,

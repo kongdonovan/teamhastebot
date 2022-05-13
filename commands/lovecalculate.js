@@ -8,6 +8,7 @@ const { loveCalculateArray } = require('./images.json');
 
 module.exports = {
     name: "lovecalculate",
+    category: "fun",
     description: "Calculates the percentage of love between two individuals.",
     args: "<p1> <p2>",
     arglen: 2,

@@ -7,7 +7,8 @@ const { Guild } = require('discord.js');
 const { prefix } = require('../config.json');
 
 module.exports = {
-    name: "changename",
+    name: "setname",
+    category: "admin",
     description: "Changes the bot's profile picture.",
     args: "<user> <name>",
     arglen: -1,

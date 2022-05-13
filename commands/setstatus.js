@@ -7,7 +7,8 @@ const { Guild } = require('discord.js');
 const { prefix } = require('../config.json');
 
 module.exports = {
-    name: "changestatus",
+    name: "setstatus",
+    category: "admin",
     description: "Changes the status of the bot. Note that you cannot remove '| !help' from the status. Valid types are PLAYING, STREAMING, LISTENING, WATCHING, COMPETING",
     args: "<type> <message>",
     arglen: -1,

@@ -8,6 +8,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
     name: "channelcreate",
+    category: "utility",
     description: "Creates a channel in the current category you are in.",
     args: "<channelname>",
     arglen: 1,

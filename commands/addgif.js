@@ -9,6 +9,7 @@ const fs = require('fs').promises;
 
 module.exports = {
     name: "addgif",
+    category:"admin",
     description: "Adds a gif to the specified array. Make sure to provide the link of the image source.",
     args:"<array> <image link>",
     arglen: 2,

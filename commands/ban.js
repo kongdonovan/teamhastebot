@@ -8,6 +8,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
     name: "ban",
+    category: "admin",
     description: "Bans a user from the server.",
     args: '<user>',
     arglen: 1,
