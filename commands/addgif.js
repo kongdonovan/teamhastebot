@@ -9,7 +9,7 @@ const fs = require('fs').promises;
 
 module.exports = {
     name: "addgif",
-    description: "Adds a gif to the specified array. Make sure to provide the link of the image source.",
+    description: "Adds a gif to the specified array. Make sure to provide the link of the image source. Valid arrays are partyImages, noPartyImages, fightGifs.",
     args:"<array> <image link>",
     arglen: 2,
     argrequired: true,
