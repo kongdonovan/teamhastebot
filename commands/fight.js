@@ -9,6 +9,7 @@ const { fightGifs } = require('./images.json');
 
 module.exports = {
     name: "fight",
+    category: "fun",
     description: "Determines who wins the fight",
     args: "<p1> <p2>",
     arglen: 2,

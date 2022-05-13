@@ -8,6 +8,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
     name: "donate",
+    category: "fun",
     description: "Shows ways to donate to Donovan",
     arglen: 0,
     argrequired: true,

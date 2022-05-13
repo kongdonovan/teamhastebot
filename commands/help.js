@@ -7,6 +7,7 @@ const {prefix} = require('../config.json')
 
 module.exports = {
     name:"help",
+    category: "utility",
     description: "Gets info on any command. If you leave the command argument blank, it will give info on all commands.",
     args: "<command>",
     arglen: 1,

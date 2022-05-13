@@ -8,6 +8,7 @@ const { prefix } = require('../config.json');
 
 module.exports = {
     name: "commandname",
+    category: "categoryhere",
     description: "commanddescription",
     args: "", // leave blank for no args
     arglen: 0, // set to -1 for infinite args
