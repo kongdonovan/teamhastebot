@@ -11,6 +11,7 @@ module.exports = {
     name: "removegif",
     description: "Removes a gif from a specified array. Valid arrays are partyImages, noPartyImages, fightGifs.",
     args:"<array> <image link>",
+    category:"admin",
     arglen: 2,
     argrequired: true,
     async execute(message) {

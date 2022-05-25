@@ -11,6 +11,7 @@ module.exports = {
     description: "Purges the specified number of messages from a channel, up to a maximum of 100.",
     args: "<num>", // leave blank for no args
     arglen: 1, // set to -1 for infinite args
+    category:"utility",
     argrequired: true,
     execute(message) {
         const embed = new MessageEmbed();

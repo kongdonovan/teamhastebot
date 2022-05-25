@@ -10,6 +10,7 @@
     name: "userinfo",
     description: "Returns information about a user.",
     args: "<user>",
+    category:"utility",
     arglen: 1,
     argrequired: true,
     execute(message) {

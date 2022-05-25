@@ -11,6 +11,7 @@ module.exports = {
     name: "addgif",
     description: "Adds a gif to the specified array. Make sure to provide the link of the image source. Valid arrays are partyImages, noPartyImages, fightGifs.",
     args:"<array> <image link>",
+    category:"admin",
     arglen: 2,
     argrequired: true,
     async execute(message) {
