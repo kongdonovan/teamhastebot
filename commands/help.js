@@ -34,9 +34,7 @@ module.exports = {
                     }
                 }
             }
-            console.log(cmdTotal);
             let newCmdTotal = cmdTotal / 10;
-            console.log(cmdTotal);
             if (cmdTotal % 10 > 0) {
                 newCmdTotal++;
             }

@@ -7,7 +7,7 @@ const { Guild } = require('discord.js');
 const { prefix } = require('../config.json');
 
 module.exports = {
-    name: "channelcreate",
+    name: "createchannel",
     category: "utility",
     description: "Creates a channel in the current category you are in.",
     args: "<channelname>",

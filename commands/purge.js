@@ -27,7 +27,6 @@ module.exports = {
                 .setTitle('Command successfully executed!')
                 .setDescription(number + ' messages have been purged.');
         }
-        
         return message.channel.send({ embeds: [embed] });
     }
 }
