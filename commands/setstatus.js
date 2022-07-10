@@ -14,23 +14,29 @@ module.exports = {
     arglen: -1,
     argrequired: true,
     async execute(message) {
-        let cmdArray = message.content.split(" ");
-        let client = message.client.user;
-        let str = "";
-        for (let i = 2; i < cmdArray.length; i++) {
-            str += cmdArray[i] + " "
+        try {
+            let cmdArray = message.content.split(" ");
+            let client = message.client.user;
+            let str = "";
+            for (let i = 2; i < cmdArray.length; i++) {
+                str += cmdArray[i] + " "
+            }
+            str = str.trim();
+            let dir = __dirname
+            let config = fs.readFile(dir + '/config.json', 'utf8');
+            let configJSON = JSON.parse(config);
+            configJSON.status = str;
+            configJSON.statusType = cmdArray[1];
+            await fs.writeFile(dir + '/config.json', configJSON)
+            client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
+            const embed = new MessageEmbed()
+                .setTitle('Command successfully executed!')
+                .setDescription('Status has been changed to whatever you specified.');
+            return message.channel.send({ embeds: [embed] });
+        } catch (err) {
+            console.log(err);
+            return;
         }
-        str = str.trim();
-        let dir = __dirname
-        let config = fs.readFile(dir + '/config.json', 'utf8');
-        let configJSON = JSON.parse(config);
-        configJSON.status = str;
-        configJSON.statusType = cmdArray[1];
-        await fs.writeFile(dir + '/config.json', configJSON)
-        client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
-        const embed = new MessageEmbed()
-            .setTitle('Command successfully executed!')
-            .setDescription('Status has been changed to whatever you specified.');
-        return message.channel.send({ embeds: [embed] });
+        
     }
 }
