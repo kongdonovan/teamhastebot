@@ -4,7 +4,7 @@
 
 const { MessageEmbed } = require('discord.js');
 const { Guild } = require('discord.js');
-const { prefix, status } = require('../config.json');
+const { prefix } = require('../config.json');
 
 module.exports = {
     name: "setstatus",
@@ -13,7 +13,7 @@ module.exports = {
     args: "<type> <message>",
     arglen: -1,
     argrequired: true,
-    execute(message) {
+    async execute(message) {
         let cmdArray = message.content.split(" ");
         let client = message.client.user;
         let str = "";
@@ -21,7 +21,12 @@ module.exports = {
             str += cmdArray[i] + " "
         }
         str = str.trim();
-        status = str;
+        let dir = __dirname
+        let config = fs.readFile(dir + '/config.json', 'utf8');
+        let configJSON = JSON.parse(config);
+        configJSON.status = str;
+        configJSON.statusType = cmdArray[1];
+        await fs.writeFile(dir + '/config.json', configJSON)
         client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
         const embed = new MessageEmbed()
             .setTitle('Command successfully executed!')
