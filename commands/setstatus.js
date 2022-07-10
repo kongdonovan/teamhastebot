@@ -5,6 +5,7 @@
 const { MessageEmbed } = require('discord.js');
 const { Guild } = require('discord.js');
 const { prefix } = require('../config.json');
+const fs = require('fs');
 
 module.exports = {
     name: "setstatus",
