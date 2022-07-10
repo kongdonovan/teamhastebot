@@ -23,12 +23,11 @@ module.exports = {
                 str += cmdArray[i] + " "
             }
             str = str.trim();
-            let dir = __dirname
-            let config = await fs.readFile(dir + '/../config.json', 'utf8');
+            let config = await fs.readFile('../config.json', 'utf8');
             let configJSON = JSON.parse(config);
             configJSON.status = str;
             configJSON.statusType = cmdArray[1];
-            await fs.writeFile(dir + '/../config.json', configJSON)
+            await fs.writeFile('../config.json', configJSON)
             client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
             const embed = new MessageEmbed()
                 .setTitle('Command successfully executed!')
