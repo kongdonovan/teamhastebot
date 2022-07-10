@@ -28,6 +28,7 @@ module.exports = {
             let configJSON = JSON.parse(config);
             configJSON.status = str;
             configJSON.statusType = cmdArray[1];
+            configJSON = JSON.stringify(configJSON);
             await fs.writeFile(dir + '/../config.json', configJSON)
             client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
             const embed = new MessageEmbed()
