@@ -4,7 +4,7 @@
 
 const { MessageEmbed } = require('discord.js');
 const { Guild } = require('discord.js');
-const { prefix } = require('../config.json');
+const { prefix, status } = require('../config.json');
 
 module.exports = {
     name: "setstatus",
@@ -21,6 +21,7 @@ module.exports = {
             str += cmdArray[i] + " "
         }
         str = str.trim();
+        status = str;
         client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
         const embed = new MessageEmbed()
             .setTitle('Command successfully executed!')

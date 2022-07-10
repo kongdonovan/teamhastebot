@@ -5,10 +5,10 @@
 // Required dependencies and modules
 const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const fs = require('fs');
-const { token, prefix } = require('./config.json');
+const { token, prefix, status } = require('./config.json');
 
 // Object initializations
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES], presence: {status: "dnd", activities: [{name: "Team Haste | " + prefix + "help", type: 3}]}, partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES], presence: {status: "dnd", activities: [{name: status + " | " + prefix + "help", type: 3}]}, partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 client.commands = new Collection();
 let parsers = new Collection();
 
