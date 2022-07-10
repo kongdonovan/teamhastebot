@@ -5,7 +5,7 @@
 const { MessageEmbed } = require('discord.js');
 const { Guild } = require('discord.js');
 const { prefix } = require('../config.json');
-const fs = require('fs');
+const fs = require('fs').promises;
 
 module.exports = {
     name: "setstatus",
@@ -24,7 +24,7 @@ module.exports = {
             }
             str = str.trim();
             let dir = __dirname
-            let config = fs.readFile(dir + '/config.json', 'utf8');
+            let config = await fs.readFile(dir + '/config.json', 'utf8');
             let configJSON = JSON.parse(config);
             configJSON.status = str;
             configJSON.statusType = cmdArray[1];
