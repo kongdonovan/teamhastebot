@@ -5,6 +5,7 @@
 const { MessageEmbed } = require('discord.js');
 const { Guild } = require('discord.js');
 const { prefix } = require('../config.json');
+const fs = require('fs').promises;
 
 module.exports = {
     name: "setstatus",
@@ -13,18 +14,31 @@ module.exports = {
     args: "<type> <message>",
     arglen: -1,
     argrequired: true,
-    execute(message) {
-        let cmdArray = message.content.split(" ");
-        let client = message.client.user;
-        let str = "";
-        for (let i = 2; i < cmdArray.length; i++) {
-            str += cmdArray[i] + " "
+    async execute(message) {
+        try {
+            let cmdArray = message.content.split(" ");
+            let client = message.client.user;
+            let str = "";
+            for (let i = 2; i < cmdArray.length; i++) {
+                str += cmdArray[i] + " "
+            }
+            str = str.trim();
+            let dir = __dirname
+            let config = await fs.readFile(dir + '/../config.json', 'utf8');
+            let configJSON = JSON.parse(config);
+            configJSON.status = str;
+            configJSON.statusType = cmdArray[1];
+            configJSON = JSON.stringify(configJSON);
+            await fs.writeFile(dir + '/../config.json', configJSON)
+            client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
+            const embed = new MessageEmbed()
+                .setTitle('Command successfully executed!')
+                .setDescription('Status has been changed to whatever you specified.');
+            return message.channel.send({ embeds: [embed] });
+        } catch (err) {
+            console.log(err);
+            return;
         }
-        str = str.trim();
-        client.setActivity(str + " | " + prefix + "help", {type: cmdArray[1]})
-        const embed = new MessageEmbed()
-            .setTitle('Command successfully executed!')
-            .setDescription('Status has been changed to whatever you specified.');
-        return message.channel.send({ embeds: [embed] });
+        
     }
 }
