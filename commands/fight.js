@@ -17,10 +17,9 @@ module.exports = {
     execute(message) {
         let cmdArray = message.content.split(" ");
 
-        if (cmdArray[1] === "al-jeffrey") {
-            
-        }
-        const randNum = cmdArray[1] === "al-jeffrey" ? 2 : cmdArray[2] === "al-jeffrey" ? 1 : Math.floor(Math.random() * 2) + 1;
+        const randNum = cmdArray[1].toLowerCase() === "al-jeffrey" ? 2 : cmdArray[2].toLowerCase() === "al-jeffrey" ? 1 
+                            : cmdArray[1].toLowerCase() === "aljeffrey" ? 2 : cmdArray[2].toLowerCase() === "aljeffrey" ? 1 
+                            : Math.floor(Math.random() * 2) + 1;
 
         const chooseFightGif = fightGifs[Math.floor(Math.random() * fightGifs.length)];
         const embed = new MessageEmbed()
