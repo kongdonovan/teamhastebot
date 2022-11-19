@@ -53,7 +53,7 @@ module.exports = {
 function calculateValue(name) {
     let value = 0;
     for (let i = 0; i < name.length; i++) {
-        value = 31 * value + name.charCodeAt(i);
+        value = 31 * value + name.toLowerCase().charCodeAt(i);
     }
     return value;
 }
