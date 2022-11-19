@@ -16,7 +16,12 @@ module.exports = {
     argrequired: true,
     execute(message) {
         let cmdArray = message.content.split(" ");
-        const randNum = Math.floor(Math.random() * 2) + 1
+
+        if (cmdArray[1] === "al-jeffrey") {
+            
+        }
+        const randNum = cmdArray[1] === "al-jeffrey" ? 2 : cmdArray[2] === "al-jeffrey" ? 1 : Math.floor(Math.random() * 2) + 1;
+
         const chooseFightGif = fightGifs[Math.floor(Math.random() * fightGifs.length)];
         const embed = new MessageEmbed()
             .setTitle(cmdArray[randNum] + " WINS!!!")
